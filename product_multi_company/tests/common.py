@@ -12,13 +12,17 @@ class ProductMultiCompanyCommon:
                 "name": "Product without company",
             }
         )
-        cls.product_company_1 = cls.product_obj.with_company(cls.company_1).create(
+        cls.product_company_1 = cls.product_obj.with_context(
+            allowed_company_ids=cls.company_1.ids
+        ).create(
             {
                 "name": "Product from company 1",
                 "company_ids": [(6, 0, cls.company_1.ids)],
             }
         )
-        cls.product_company_2 = cls.product_obj.with_company(cls.company_2).create(
+        cls.product_company_2 = cls.product_obj.with_context(
+            allowed_company_ids=cls.company_2.ids
+        ).create(
             {
                 "name": "Product from company 2",
                 "company_ids": [(6, 0, cls.company_2.ids)],
@@ -37,7 +41,7 @@ class ProductMultiCompanyCommon:
             {
                 "name": "User company 1",
                 "login": "user_company_1",
-                "groups_id": [(6, 0, cls.groups.ids)],
+                "group_ids": [(6, 0, cls.groups.ids)],
                 "company_id": cls.company_1.id,
                 "company_ids": [(6, 0, cls.company_1.ids)],
             }
@@ -46,7 +50,7 @@ class ProductMultiCompanyCommon:
             {
                 "name": "User company 2",
                 "login": "user_company_2",
-                "groups_id": [(6, 0, cls.groups.ids)],
+                "group_ids": [(6, 0, cls.groups.ids)],
                 "company_id": cls.company_2.id,
                 "company_ids": [(6, 0, cls.company_2.ids)],
             }

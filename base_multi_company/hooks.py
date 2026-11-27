@@ -25,7 +25,7 @@ def set_security_rule(env, rule_ref):
         rule.write(
             {
                 "active": True,
-                "domain_force": (
+                "domain": (
                     "['|', ('company_ids', '=', False),"
                     " ('company_ids', 'in', company_ids)]"
                 ),
@@ -82,7 +82,7 @@ def uninstall_hook(env, rule_ref):
         rule.write(
             {
                 "active": False,
-                "domain_force": (
+                "domain": (
                     " ['|', ('company_ids', '=', False),"
                     " ('company_ids', 'in', company_ids)]"
                 ),

@@ -51,7 +51,7 @@ class TestPartnerMultiCompany(common.TransactionCase):
                     "name": "User company 1",
                     "login": "user_company_1",
                     "email": "somebody@somewhere.com",
-                    "groups_id": [
+                    "group_ids": [
                         Command.link(cls.env.ref("base.group_partner_manager").id),
                         Command.link(cls.env.ref("base.group_user").id),
                     ],
@@ -66,7 +66,7 @@ class TestPartnerMultiCompany(common.TransactionCase):
                     "name": "User company 2",
                     "login": "user_company_2",
                     "email": "somebody@somewhere.com",
-                    "groups_id": [
+                    "group_ids": [
                         Command.link(cls.env.ref("base.group_partner_manager").id),
                         Command.link(cls.env.ref("base.group_user").id),
                     ],
@@ -156,7 +156,7 @@ class TestPartnerMultiCompany(common.TransactionCase):
             "('company_id', 'in', company_ids),"
             "('company_id', '=', False)]"
         )
-        self.assertEqual(rule.domain_force, domain)
+        self.assertEqual(rule.domain, domain)
 
     def test_switch_user_company(self):
         self.user_company_1.company_ids = (self.company_1 + self.company_2).ids
